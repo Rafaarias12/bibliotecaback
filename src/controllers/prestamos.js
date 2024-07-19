@@ -17,18 +17,12 @@ const newPrestamo = async (req, res) =>{
     try{
         const conn = await conexion
         const {
-            estado,
             usuario,
-            fecha_init,
-            fecha_final,
             libro
         }  = req.body
 
-        await conn.query(`CALL spSolicitaLibro(?,?,?,?,?)`,[
-            estado,
+        await conn.query(`CALL spSolicitaLibro(?,?)`,[
             usuario,
-            fecha_init,
-            fecha_final,
             libro
         ])
 

@@ -30,6 +30,7 @@ const login = async (req, res) => {
       [user]
     );
     const usuario = rows[0][0][0];
+    console.log(usuario)
 
     const isMatch = await bcrypt.compare(password, usuario.password);
 
@@ -43,7 +44,7 @@ const login = async (req, res) => {
                 expiresIn:"8h"
             }
         )
-        res.json({ok: true, perfil: usuario.perfil, msg: token})
+        res.json({ok: true, perfil: usuario.perfil, usuario: usuario.user, msg: token})
     }
     }
     catch (err) {
